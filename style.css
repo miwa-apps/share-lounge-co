@@ -55,9 +55,8 @@ nav a:hover { text-decoration: underline; }
 .menu-button { font: inherit; font-weight: 700; color: var(--blue); background: white; border: 1px solid var(--line); border-radius: .35rem; padding: .45rem .7rem; }
 
 .hero {
-  /* 写真が届いたら none を url("./assets/hero.webp") に差し替える。 */
-  --hero-photo: none;
-  --hero-scrim: linear-gradient(90deg, #faf8efed, #faf8efd4 32%, #faf8ef45 66%, transparent 88%);
+  --hero-photo: url("./assets/main.jpg");
+  --hero-scrim: linear-gradient(90deg, #faf8efed, #faf8efde 29%, #faf8ef35 58%, transparent 78%);
   --hero-header-scrim: linear-gradient(#f7f8f4f2, #f7f8f4a8 4.5rem, transparent 10rem);
   display: grid;
   align-items: center;
