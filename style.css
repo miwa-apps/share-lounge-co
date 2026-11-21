@@ -5,6 +5,7 @@
   --blue: #12546b;
   --wash: #edf5f6;
   --line: #cbdde0;
+  --header-height: 4.5rem;
   font-family: "Hiragino Sans", "Yu Gothic", Meiryo, sans-serif;
   color: var(--ink);
   background: #fff;
@@ -14,6 +15,7 @@
 *, *::before, *::after { box-sizing: border-box; }
 [hidden] { display: none !important; }
 body { margin: 0; }
+html:has(.header.is-enhanced) { scroll-padding-top: calc(var(--header-height) + 1rem); }
 a { color: inherit; text-underline-offset: .25em; }
 :focus-visible { outline: 3px solid #2695b5; outline-offset: 4px; }
 h1, h2, h3, p, dl, dd { margin: 0; }
@@ -21,13 +23,32 @@ p + p { margin-top: 1rem; }
 h2 { font-size: clamp(1.65rem, 4vw, 2.4rem); margin-bottom: 1rem; line-height: 1.35; }
 h3 { font-size: 1.15rem; margin-bottom: .45rem; }
 .wrap { width: min(72rem, calc(100% - 3rem)); margin-inline: auto; }
-.skip { position: absolute; z-index: 2; inset: .5rem auto auto .5rem; padding: .5rem 1rem; background: white; }
+.skip { position: absolute; z-index: 4; inset: .5rem auto auto .5rem; padding: .5rem 1rem; background: white; }
 .skip:not(:focus) { clip-path: inset(50%); }
-.header { border-bottom: 1px solid var(--line); }
+.header { background: #fff; }
+.header.is-enhanced {
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  margin-bottom: calc(-1 * var(--header-height));
+  background: transparent;
+}
+.header.is-scrolled, .header:has(.menu-button[aria-expanded="true"]:not([hidden])) {
+  background: #fff;
+  box-shadow: 0 1px 0 var(--line);
+}
+.header.is-enhanced .header-inner {
+  min-height: var(--header-height);
+  padding-block: .5rem;
+}
+.header.is-enhanced + main .hero {
+  padding-top: calc(var(--header-height) + clamp(3rem, 6vw, 6rem));
+}
 .header-inner, .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-block: 1rem; }
 .brand { font: 700 1.4rem/1.3 Georgia, serif; white-space: nowrap; text-decoration: none; }
 nav { display: flex; align-items: center; gap: clamp(.75rem, 2.2vw, 2rem); }
-nav a, .footer-inner a { font-size: .9rem; font-weight: 700; }
+nav a { font-size: .9rem; font-weight: 500; }
+.footer-inner a { font-size: .9rem; font-weight: 700; }
 nav a { padding-block: .45rem; text-decoration: none; }
 nav a:hover { text-decoration: underline; }
 .nav-book { color: var(--blue); border-bottom: 2px solid currentColor; }
@@ -36,21 +57,24 @@ nav a:hover { text-decoration: underline; }
 .hero {
   /* 写真が届いたら none を url("./assets/hero.webp") に差し替える。 */
   --hero-photo: none;
-  --hero-scrim: linear-gradient(90deg, #fbf8f1f7 0%, #fbf8f1d9 39%, #fbf8f172 65%, transparent 88%);
+  --hero-scrim: linear-gradient(90deg, #faf8efed, #faf8efd4 32%, #faf8ef45 66%, transparent 88%);
+  --hero-header-scrim: linear-gradient(#f7f8f4f2, #f7f8f4a8 4.5rem, transparent 10rem);
   display: grid;
   align-items: center;
-  min-height: clamp(33rem, 65vh, 46rem);
+  min-height: clamp(35rem, 82svh, 52rem);
   padding-block: clamp(4rem, 9vw, 8rem);
   background:
+    var(--hero-header-scrim),
     var(--hero-scrim),
     var(--hero-photo) center / cover no-repeat,
-    repeating-linear-gradient(177deg, transparent 0 14px, #e1f2ef29 15px 16px, transparent 17px 29px) bottom / 100% 53% no-repeat,
-    radial-gradient(ellipse at 85% 120%, #a8ced0, transparent 60%),
+    repeating-linear-gradient(177deg, transparent 0 20px, #e1f2ef1f 21px 22px, transparent 23px 40px) bottom / 100% 53% no-repeat,
     linear-gradient(180deg, #cfdee1 0%, #e7eeec 46%, #91b7bd 47%, #568994 82%, #75a9ab 100%);
 }
 .eyebrow { color: var(--blue); font-weight: 700; font-size: .9rem; letter-spacing: .06em; }
 .hero h1 {
-  font-size: clamp(2rem, 6vw, 4.65rem);
+  color: #163f4c;
+  font-family: "Hiragino Mincho ProN", "Yu Mincho", YuMincho, serif;
+  font-size: clamp(2.2rem, 6vw, 4.8rem);
   font-weight: 500;
   line-height: 1.24;
   letter-spacing: .025em;
@@ -86,8 +110,23 @@ footer { border-top: 1px solid var(--line); background: var(--wash); }
   .wrap { width: min(100% - 2rem, 40rem); }
   .header-inner, nav { flex-wrap: wrap; }
   nav { width: 100%; gap: .25rem 1rem; }
+  .header.is-enhanced nav {
+    position: absolute;
+    inset: 100% 0 auto;
+    display: grid;
+    gap: 0;
+    padding: .5rem max(1rem, calc((100% - 40rem) / 2)) 1rem;
+    background: #fff;
+    border-bottom: 1px solid var(--line);
+  }
+  .header.is-enhanced nav a {
+    display: flex;
+    align-items: center;
+    min-height: 2.75rem;
+    border-bottom: 1px solid var(--line);
+  }
   .hero {
-    --hero-scrim: linear-gradient(180deg, #fbf8f1f5 0%, #fbf8f1eb 62%, #fbf8f19c 83%, #fbf8f129 100%);
+    --hero-scrim: linear-gradient(180deg, #faf8efed 0%, #faf8efe0 62%, #faf8ef6b 85%, transparent 100%);
     min-height: 30rem;
     padding-block: 3rem 6rem;
   }

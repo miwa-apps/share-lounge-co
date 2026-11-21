@@ -1,3 +1,4 @@
+const header = document.querySelector(".header");
 const menuButton = document.querySelector("#menu-button");
 const navigation = document.querySelector("#navigation");
 const mobileLayout = window.matchMedia("(max-width: 48rem)");
@@ -17,8 +18,9 @@ menuButton.addEventListener("click", () => {
 });
 
 navigation.addEventListener("click", (event) => {
-  if (mobileLayout.matches && event.target.closest("a")) {
-    const section = document.querySelector(event.target.hash);
+  const link = event.target.closest("a");
+  if (mobileLayout.matches && link) {
+    const section = document.getElementById(link.hash.slice(1));
     setMenuOpen(false);
     section.tabIndex = -1;
     section.focus({ preventScroll: true });
@@ -34,3 +36,11 @@ document.addEventListener("keydown", (event) => {
 
 mobileLayout.addEventListener("change", syncMenuLayout);
 syncMenuLayout();
+
+function syncHeaderBackground() {
+  header.classList.toggle("is-scrolled", window.scrollY > 0);
+}
+
+header.classList.add("is-enhanced");
+window.addEventListener("scroll", syncHeaderBackground, { passive: true });
+syncHeaderBackground();
