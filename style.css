@@ -257,10 +257,10 @@ nav a:hover { text-decoration: underline; }
 
 /* 利用シーンと施設・設備の写真レイアウト */
 .scenes { background: #f1f7f7; }
-.scene-list { max-width: 100%; }
+.scene-list { width: 85%; max-width: none; margin-inline: auto; }
 .scene:has(.scene-media:not([hidden])) {
   grid-template-columns: minmax(0, 1fr) minmax(0, 1.55fr);
-  gap: clamp(1.5rem, 7vw, 6rem);
+  gap: calc(clamp(1.5rem, 7vw, 6rem) * .85);
   padding-block: clamp(1.5rem, 4vw, 3.5rem);
 }
 .scene:nth-child(even):has(.scene-media:not([hidden])) {
@@ -288,14 +288,31 @@ nav a:hover { text-decoration: underline; }
 .facility-photo { display: block; min-height: 0; background: none; }
 .facility-layout { grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); }
 .more-photos { margin-top: 2rem; border-top: 1px solid var(--line); padding-top: 1rem; }
-.more-photos summary { color: var(--blue); font-weight: 700; cursor: pointer; }
+.more-photos summary {
+  display: block;
+  width: fit-content;
+  padding-block: .5rem;
+  list-style: none;
+  color: var(--blue);
+  cursor: pointer;
+}
+.more-photos summary::-webkit-details-marker { display: none; }
+.more-photos summary:hover, .more-photos summary:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: .25em;
+}
+.more-photos summary:focus-visible { outline: 0; text-decoration-thickness: 2px; }
+.more-photos:not([open]) .more-photos-hide,
+.more-photos[open] .more-photos-show { display: none; }
 .more-photos-gallery {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1rem;
   margin-top: 1rem;
+  max-width: calc(2 * 460px + 1rem);
 }
 @media (max-width: 48rem) {
+  .scene-list { width: 100%; }
   .scene:has(.scene-media:not([hidden])),
   .scene:nth-child(even):has(.scene-media:not([hidden])),
   .facility-layout { grid-template-columns: 1fr; }
