@@ -33,10 +33,30 @@ nav a:hover { text-decoration: underline; }
 .nav-book { color: var(--blue); border-bottom: 2px solid currentColor; }
 .menu-button { font: inherit; font-weight: 700; color: var(--blue); background: white; border: 1px solid var(--line); border-radius: .35rem; padding: .45rem .7rem; }
 
-.hero { display: grid; grid-template-columns: 1fr 1fr; align-items: stretch; gap: clamp(1.75rem, 5vw, 4rem); padding-block: clamp(2.25rem, 6vw, 5rem); }
-.hero-copy { align-self: center; padding-block: 1rem; }
+.hero {
+  /* 写真が届いたら none を url("./assets/hero.webp") に差し替える。 */
+  --hero-photo: none;
+  --hero-scrim: linear-gradient(90deg, #fbf8f1f7 0%, #fbf8f1d9 39%, #fbf8f172 65%, transparent 88%);
+  display: grid;
+  align-items: center;
+  min-height: clamp(33rem, 65vh, 46rem);
+  padding-block: clamp(4rem, 9vw, 8rem);
+  background:
+    var(--hero-scrim),
+    var(--hero-photo) center / cover no-repeat,
+    repeating-linear-gradient(177deg, transparent 0 14px, #e1f2ef29 15px 16px, transparent 17px 29px) bottom / 100% 53% no-repeat,
+    radial-gradient(ellipse at 85% 120%, #a8ced0, transparent 60%),
+    linear-gradient(180deg, #cfdee1 0%, #e7eeec 46%, #91b7bd 47%, #568994 82%, #75a9ab 100%);
+}
 .eyebrow { color: var(--blue); font-weight: 700; font-size: .9rem; letter-spacing: .06em; }
-h1 { font-size: clamp(2rem, 5.1vw, 4.35rem); line-height: 1.22; letter-spacing: .025em; margin-block: 1rem 1.25rem; word-break: auto-phrase; }
+.hero h1 {
+  font-size: clamp(2rem, 6vw, 4.65rem);
+  font-weight: 500;
+  line-height: 1.24;
+  letter-spacing: .025em;
+  margin-block: 1.15rem 1.5rem;
+}
+.hero h1 span { display: block; }
 .hero-copy > p:last-of-type, .scene-grid p, .access-grid p { color: var(--muted); }
 .actions { display: flex; flex-wrap: wrap; gap: .65rem; margin-top: 1.6rem; }
 .button { display: inline-flex; align-items: center; justify-content: center; padding: .65rem 1rem; min-height: 2.75rem; font: inherit; font-weight: 700; border: 1px solid var(--blue); border-radius: .35rem; text-decoration: none; }
@@ -44,15 +64,6 @@ h1 { font-size: clamp(2rem, 5.1vw, 4.35rem); line-height: 1.22; letter-spacing: 
 .secondary { color: var(--blue); background: white; }
 .primary:hover { background: #0c4154; }
 .secondary:hover { background: var(--wash); }
-.sea {
-  min-height: 25rem;
-  border-radius: .4rem;
-  background:
-    repeating-linear-gradient(174deg, transparent 0 9px, #d0f5f21a 10px 11px, transparent 12px 20px) bottom / 100% 53% no-repeat,
-    radial-gradient(ellipse at 75% 110%, #7dbcc4, transparent 66%),
-    linear-gradient(180deg, #a6c5d3, #e0ebed 46%, #46788e 47%, #18576c 72%, #1d6577);
-}
-
 .band { background: var(--wash); }
 .scenes { padding-block: clamp(2rem, 5vw, 4rem); }
 .scene-grid, .access-grid { display: grid; gap: 1rem; }
@@ -75,9 +86,12 @@ footer { border-top: 1px solid var(--line); background: var(--wash); }
   .wrap { width: min(100% - 2rem, 40rem); }
   .header-inner, nav { flex-wrap: wrap; }
   nav { width: 100%; gap: .25rem 1rem; }
-  .hero, .split, .scene-grid { grid-template-columns: 1fr; }
-  .hero-copy { padding-block: 0; }
-  .sea { min-height: 0; aspect-ratio: 16 / 8; }
+  .hero {
+    --hero-scrim: linear-gradient(180deg, #fbf8f1f5 0%, #fbf8f1eb 62%, #fbf8f19c 83%, #fbf8f129 100%);
+    min-height: 30rem;
+    padding-block: 3rem 6rem;
+  }
+  .split, .scene-grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 28rem) {
   .access-grid { grid-template-columns: 1fr; }
