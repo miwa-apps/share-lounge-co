@@ -24,6 +24,7 @@ python3 -m http.server 8000 --bind 127.0.0.1
 ## 確定後の更新
 
 - `index.html` の施設名テキストにロゴを添える場合も、サイト上の施設名は「Share Lounge Co.」と表記します。
+- 利用シーンに写真を追加するときは、各 `.scene-media` の `hidden` を外し、画像パスと代替テキストを指定した `img` を中に追加します。
 - 施設写真が届いたら、`index.html` の `.facility-photo` 内の案内文を `<img src="./assets/facility.jpg" alt="写真の内容を表す説明">` に差し替えます。ヒーローの海は CSS の装飾です。
 - ヒーローの背景写真を差し替える場合は、`style.css` の `--hero-photo` に画像パスを指定します。
 - アクセスの準備中の表示を、確定した住所、車の経路、バス停などの情報に差し替えます。

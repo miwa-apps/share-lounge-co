@@ -36,12 +36,31 @@
     </section>
 
     <section class="scenes band" aria-labelledby="scenes-title">
-      <div class="wrap">
+      <div class="wrap section">
         <h2 id="scenes-title">利用シーン</h2>
-        <div class="scene-grid">
-          <article><h3>旅の合間に</h3><p>移動や観光の合間に、メールの返信や資料の仕上げを。</p></article>
-          <article><h3>気分を変えて</h3><p>いつもと違う場所で、考えを整理したり、ひとつの仕事に集中したり。</p></article>
-          <article><h3>仕事の拠点として</h3><p>本部町での滞在中や日々の仕事に、自分のペースで働く場所を。</p></article>
+        <div class="scene-list">
+          <article class="scene">
+            <div class="scene-copy">
+              <h3>旅の合間に</h3>
+              <p>移動や観光の合間に、メールの返信や資料の仕上げを</p>
+            </div>
+            <!-- 写真が届いたら scene-media を表示し、画像を追加します。 -->
+            <div class="scene-media" hidden></div>
+          </article>
+          <article class="scene">
+            <div class="scene-copy">
+              <h3>気分を変えて</h3>
+              <p>いつもと違う場所で、考えを整理したり、ひとつの仕事に集中したり</p>
+            </div>
+            <div class="scene-media" hidden></div>
+          </article>
+          <article class="scene">
+            <div class="scene-copy">
+              <h3>仕事の拠点として</h3>
+              <p>本部町での滞在中や日々の仕事に、自分のペースで働く場所を</p>
+            </div>
+            <div class="scene-media" hidden></div>
+          </article>
         </div>
       </div>
     </section>
@@ -82,7 +101,7 @@
           <p>年中無休</p>
         </div>
         <div>
-          <table class="rates">
+          <table id="rates" class="rates">
             <caption>ご利用料金</caption>
             <thead>
               <tr><th scope="col">利用時間</th><th scope="col">一般料金</th><th scope="col">宿泊者料金</th></tr>
@@ -112,11 +131,17 @@
     </section>
 
     <section id="booking" class="booking" aria-labelledby="booking-title">
-      <div class="wrap section split">
-        <div><h2 id="booking-title">会議室予約</h2></div>
-        <div>
-          <p>ご予約はスタッフ確認制です。<strong>フォームの送信だけでは予約は確定しません。</strong>スタッフからの確定連絡をお待ちください。</p>
-          <p id="booking-status">予約フォームは準備中です。</p>
+      <div class="wrap section">
+        <h2 id="booking-title">会議室予約</h2>
+        <ol class="booking-steps" aria-label="予約の流れ">
+          <li>Googleフォームから希望日時を送信</li>
+          <li>スタッフが空き状況を確認</li>
+          <li>メールで予約確定のご案内</li>
+          <li>ご利用当日に現地でお支払い</li>
+        </ol>
+        <div class="booking-action">
+          <p><strong>フォーム送信時点では予約は確定しません。</strong></p>
+          <p id="booking-status">予約フォームは準備中です。現在はフォームからお申し込みいただけません。</p>
           <button class="button" type="button" disabled aria-describedby="booking-status">会議室の予約を申し込む</button>
         </div>
       </div>
@@ -131,10 +156,22 @@
       </div>
     </section>
   </main>
-  <footer>
-    <div class="wrap footer-inner">
-      <span class="brand">Share Lounge Co.</span>
-      <a href="#top">ページ上部へ</a>
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-inner">
+        <div>
+          <a class="brand" href="#top">Share Lounge Co.</a>
+          <p class="footer-tagline">いつもの仕事に<br>違う景色を</p>
+        </div>
+        <nav class="footer-nav" aria-label="フッターメニュー">
+          <a href="#guide">利用案内</a>
+          <a href="#rates">料金</a>
+          <a href="#booking">会議室予約</a>
+          <a href="#access">アクセス</a>
+        </nav>
+        <p>営業時間 10:00〜22:00<br>年中無休</p>
+      </div>
+      <p class="footer-copyright"><small>© Share Lounge Co.</small></p>
     </div>
   </footer>
 </body>
