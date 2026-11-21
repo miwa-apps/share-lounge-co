@@ -196,6 +196,9 @@ nav a:hover { text-decoration: underline; }
 .booking-action .button { margin-top: .8rem; }
 .booking-action button:disabled { background: #e3ebee; color: #435d67; border-color: transparent; opacity: 1; }
 .access-grid { grid-template-columns: repeat(2, 1fr); margin-top: 1.4rem; }
+.access-map { margin-top: clamp(1.5rem, 4vw, 3rem); }
+.access-map iframe { display: block; width: 100%; height: clamp(17rem, 38vw, 24rem); border: 0; }
+.access-map p { margin-top: .75rem; }
 
 .footer-inner {
   display: grid;
