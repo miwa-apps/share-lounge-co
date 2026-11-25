@@ -9,8 +9,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&amp;family=Shippori+Mincho:wght@500;600&amp;family=Zen+Kaku+Gothic+New:wght@400;500&amp;display=swap">
-  <link rel="stylesheet" href="./style.css?v=visitor-guide">
-  <script src="./script.js" defer></script>
+  <link rel="stylesheet" href="./style.css?v=hero-five">
+  <script src="./script.js?v=hero-five" defer></script>
 </head>
 <body id="top">
   <a class="skip" href="#main">本文へ移動</a>
@@ -29,14 +29,51 @@
   </header>
   <main id="main" tabindex="-1">
     <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-slides" aria-hidden="true">
+        <img class="hero-slide is-current" src="./assets/hero-emerald.jpg" alt="" fetchpriority="high">
+        <img class="hero-slide" src="./assets/hero-golden.jpg" alt="">
+        <img class="hero-slide" src="./assets/hero-orange.jpg" alt="">
+        <img class="hero-slide hero-slide-afterglow" src="./assets/hero-afterglow.jpg" alt="">
+        <img class="hero-slide hero-slide-blue-hour" src="./assets/hero-blue-hour.jpg" alt="">
+      </div>
       <div class="hero-copy wrap">
-        <p class="eyebrow">沖縄県本部町のコワーキングスペース</p>
-        <h1 id="hero-title"><span>いつもの仕事に</span><span>違う景色を</span></h1>
-        <p>旅先でのひと仕事にも、日々の仕事の拠点にも。<br>本部町で、仕事に向き合うひとときを。</p>
+        <h1 id="hero-title" class="hero-intro">沖縄・本部町の海辺のコワーキングスペース</h1>
+        <p class="hero-eligibility">宿泊者以外の方もご利用いただけます</p>
+        <div class="hero-messages">
+          <div class="hero-message is-current">
+            <h2><span>いつもの仕事に</span><span>違う景色を</span></h2>
+            <p>海を眺めながら、自分らしい働き方を</p>
+          </div>
+          <div class="hero-message" aria-hidden="true">
+            <h2><span>旅の途中に</span><span>ひと仕事</span></h2>
+            <p>観光の合間やチェックアウト後にも</p>
+          </div>
+          <div class="hero-message" aria-hidden="true">
+            <h2><span>働く場所を</span><span>もっと自由に</span></h2>
+            <p>いつもと違う環境で、集中できる仕事時間を</p>
+          </div>
+          <div class="hero-message" aria-hidden="true">
+            <h2><span>暮らしのそばに</span><span>もうひとつの仕事場</span></h2>
+            <p>日々の仕事にも、会議や打ち合わせにも</p>
+          </div>
+          <div class="hero-message" aria-hidden="true">
+            <h2><span>仕事時間に</span><span>海という贅沢を</span></h2>
+            <p>日常から少し離れて、心地よく働くひととき</p>
+          </div>
+        </div>
         <div class="actions">
           <a class="button primary" href="#guide">利用案内を見る</a>
           <a class="button secondary" href="#booking">会議室予約</a>
         </div>
+      </div>
+      <div class="hero-controls">
+        <div class="hero-dots" role="img" aria-label="スライド 1 / 5">
+          <span class="is-current"></span><span></span><span></span><span></span><span></span>
+        </div>
+        <button class="hero-toggle" type="button" aria-label="スライドを一時停止" hidden>
+          <svg class="hero-pause-icon" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M4 2v10m6-10v10" stroke="currentColor" stroke-width="2"/></svg>
+          <svg class="hero-play-icon" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="m4 2 8 5-8 5Z" fill="currentColor"/></svg>
+        </button>
       </div>
     </section>
 
